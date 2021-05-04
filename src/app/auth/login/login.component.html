@@ -1,0 +1,32 @@
+<div class="wrapper bg-gradient-primary">
+    <mat-card>
+        <form autocomplete="off">
+            <div class="title">
+                <h2>Login</h2>
+            </div>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput 
+                       type="email"
+                       placeholder="example@aol.com">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput 
+                       type="password">
+            </mat-form-field>
+            <section>
+                <mat-checkbox color="primary">
+                 <small>Remember me</small>   
+                </mat-checkbox>
+            </section>
+            
+            <button type="submit"
+                    color="primary"
+                    mat-raised-button>
+                    Sign In
+            </button>
+        </form>
+        <p>Don't have an account yet? <a routerLink="/signup">Sign Up</a></p>
+    </mat-card>
+</div>

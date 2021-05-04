@@ -4,3 +4,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$primary: #673ab7;
+$accent: #ffd740;
+
+
+.bg-primary{
+    background-color: $primary;
+}
+
+.bg-gradient-primary{
+    background: $primary;
+    background: linear-gradient(90deg, $primary 0%, $accent 100%);
+}
