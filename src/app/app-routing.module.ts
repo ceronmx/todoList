@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RecoverComponent } from './auth/recover/recover.component';
-import { RegisterComponent } from './auth/register/register.component';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+import { PagesRoutingModule } from './pages/pages-routing.module';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: RegisterComponent},
-  {path: 'recover', component: RecoverComponent},
-  {path: '*', pathMatch: 'full', redirectTo: 'login'},
-  {path: '', pathMatch: 'full', redirectTo: 'login'}
+  { path: '', redirectTo: 'client/inicio', pathMatch: 'full' },
+  { path: '**', component: AuthComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes),
+            AuthRoutingModule,
+            PagesRoutingModule
+          ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

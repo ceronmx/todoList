@@ -1,39 +1,62 @@
-<div class="wrapper bg-gradient-primary">
-    <mat-card>
-        <form autocomplete="off">
-            <div class="title">
-                <h2>Sign Up</h2>
+<div class="wrapper animate__animated animate__bounceInRight animated__faster">
+    <img src="../../../assets/logo.png" alt="TaskPill logo">
+    <div class="form-wrapper mt-5">
+        <form [formGroup]="signupForm"
+              (submit)="signUp()"
+              autocomplete="off">
+            <div class="form-group">
+              <input type="text"
+                     class="form-control"
+                     id="name"
+                     placeholder="Name"
+                     formControlName="name"
+                     [class.is-invalid]="isInvalid('name')">
+                     <p class="text-danger"
+                            *ngIf="isInvalid('name')">Name is required</p>
             </div>
-            <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput 
-                       type="text"
-                       placeholder="Robocop">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput 
-                       type="email"
-                       placeholder="example@aol.com">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput 
-                       type="password">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Confirm password</mat-label>
-                <input matInput 
-                       type="password">
-            </mat-form-field>
-            
-            <button type="submit"
-                    color="primary"
-                    mat-raised-button>
-                    Continue
-            </button>
-        </form>
+            <div class="form-group">
+              <input type="email"
+                     class="form-control"
+                     id="email"
+                     placeholder="Email"
+                     formControlName="email"
+                     [class.is-invalid]="isInvalid('email')">
+                     <p class="text-danger"
+                     *ngIf="isInvalid('email')">Email is invalid</p>
+            </div>
+            <div class="form-group">
+              <input type="password" 
+                     class="form-control"
+                     id="pass"
+                     placeholder="Password"
+                     formControlName="pass"
+                     [class.is-invalid]="isInvalid('pass')">
+                     <p class="text-danger"
+                     *ngIf="isInvalid('pass')">At leat 6 characters</p>
+            </div>
+            <div class="form-group">
+              <input type="password" 
+                     class="form-control"
+                     id="pass2"
+                     placeholder="Confirm password"
+                     formControlName="pass2"
+                     [class.is-invalid]="password2Check || isInvalid('pass2')">
+                     <p class="text-danger"
+                     *ngIf="isInvalid('pass2')">Confirm your password</p>
+            </div>
+              <button type="submit" 
+                      class="btn btn-primary mb-4"
+                      [disabled]="signupForm.invalid">
+                      Sign up
+                    </button>
+          </form>
         <p>Already have an account? <a routerLink="/login">Sign In</a></p>
-    </mat-card>
+    </div>
 </div>
-
+<div class="wave-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280"><path fill="#007bff" fill-opacity="1" d="M0,96L205.7,192L411.4,224L617.1,160L822.9,224L1028.6,256L1234.3,256L1440,96L1440,320L1234.3,320L1028.6,320L822.9,320L617.1,320L411.4,320L205.7,320L0,320Z"></path></svg>
+</div>
+<div    *ngIf="loading"
+        class="loading-wrapper">
+    <app-loading></app-loading>
+</div>
