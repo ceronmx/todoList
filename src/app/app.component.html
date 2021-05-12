@@ -1,1 +1,5 @@
 <router-outlet></router-outlet>
+<div    *ngIf="authGuard.loadingStatus"
+        class="loading-wrapper">
+    <app-loading></app-loading>
+</div>

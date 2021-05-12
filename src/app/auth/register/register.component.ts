@@ -94,7 +94,7 @@ export class RegisterComponent implements OnInit {
         this._toastrService.error(res.response, 'Oopsies!');
       }
       this.loading = false;
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/auth/signin');
     } catch (error) {
       this._toastrService.error(error.error.response, 'Oopsies!');
       this.loading = false;

@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
-import { InicioComponent } from './inicio/inicio.component';
+
 import { RouterModule } from '@angular/router';
+import { TodoComponent } from './todo/todo.component';
+import { CompleteComponent } from './complete/complete.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
 @NgModule({
   declarations: [
     PagesComponent,
-    InicioComponent
+    TodoComponent,
+    CompleteComponent,
+    SettingsComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -17,7 +23,6 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     PagesComponent,
-    InicioComponent
-  ]
+     ]
 })
 export class PagesModule { }

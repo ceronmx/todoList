@@ -45,8 +45,7 @@ export class LoginComponent implements OnInit {
          localStorage.removeItem('email');
        }
 
-       const {response} = res;
-       console.log(response);
+       const { response } = res;
        
        localStorage.setItem('user', JSON.stringify(response.user));
        localStorage.setItem('token', response.token)
@@ -58,8 +57,9 @@ export class LoginComponent implements OnInit {
         this._toastr.error('Incorrect email/password', res.response);
       }
     } catch (error) {
-      console.log(error);  
-      this._toastr.error(error.error.response, 'Something went wrong!')
+      console.log(error);
+      
+      this._toastr.error('Incorrect email/password', 'Something went wrong!')
     }
     this.loginForm.reset();
     this.loginForm.clearValidators();

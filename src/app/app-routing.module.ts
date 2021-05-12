@@ -5,12 +5,12 @@ import { PagesRoutingModule } from './pages/pages-routing.module';
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'client/inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'client/todo', pathMatch: 'full' },
   { path: '**', component: AuthComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),
+  imports: [RouterModule.forRoot(routes, {useHash: true}),
             AuthRoutingModule,
             PagesRoutingModule
           ],

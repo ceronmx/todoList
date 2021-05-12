@@ -1,1 +1,38 @@
-<router-outlet></router-outlet>
+<div class="toolbar">
+    <div class="left">
+    </div>
+    <div class="center">
+        <h5> {{displayDate}} </h5>
+    </div>
+    <div class="right">
+    </div>
+    <div class="options">
+        <a routerLink="todo"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: false}">
+            <h6>To Do</h6>
+        </a>
+        <a routerLink="done"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: false}">
+            <h6>Done</h6>
+        </a>
+        <a routerLink="settings"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: false}">
+            <h6>Settings</h6>
+        </a>
+    </div>
+</div>
+
+
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+
+
+<div class="fab-wrapper">
+    <div class="ripple">
+        <i class="fa fa-plus"></i>
+    </div>
+</div>

@@ -31,9 +31,11 @@
                 </div>
             </div>
 
-              <button type="submit" class="btn btn-primary mb-4">Sign in</button>
+              <button type="submit" 
+                      class="btn btn-primary mb-4"
+                      [disabled]="loginForm.invalid">Sign in</button>
           </form>
-        <p>Don't have an account yet? <a routerLink="/signup">Sign Up</a></p>
+        <p>Don't have an account yet? <a routerLink="/auth/signup">Sign Up</a></p>
     </div>
 </div>
 <div class="wave-container">

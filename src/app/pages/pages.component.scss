@@ -1,0 +1,105 @@
+h6{
+    margin: 0 !important;
+}
+
+.active{
+    text-decoration: none;
+    animation: slide-bottom .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+.toolbar{
+    width: 100%;
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr;
+    align-items: center;
+    padding: 10px;
+    grid-template-areas: "a a a"
+                         "b b b";
+
+    .left{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 25px;
+    }
+
+    .center{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .right{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 25px;
+    }
+
+    .options{
+        padding: 20px;
+        grid-area: b;
+        display: flex;
+        justify-content: space-between;
+    }
+
+}
+
+
+.fab-wrapper{
+position: absolute;
+bottom: 0;
+right: 0;
+z-index: 10;
+padding-right: 10px;
+padding-bottom: 10px;
+    div{
+        align-items: center;
+        background-color: #007bff;
+        border-radius: 100%;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        height: 60px;
+        justify-content: center;
+        width: 60px;
+        -webkit-box-shadow: 4px 2px 15px 1px rgba(0,0,0,0.08); 
+        box-shadow: 4px 2px 15px 1px rgba(0,0,0,0.08);
+    }
+}
+
+.content{
+    height: 100%;
+    width: 100%;
+}
+
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .ripple:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+  }
+  .ripple:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+
+@keyframes slide-bottom {
+    0% {
+      transform: translateY(0);
+    }
+    50%{
+      transform: translateY(5px);
+    }
+    100% {
+      transform: translateY(0);
+      color: black;
+    }
+}
