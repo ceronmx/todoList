@@ -1,0 +1,17 @@
+form{
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+
+    input{
+        width: 100%;
+    }
+}
+
+.tasks{
+    padding: 25px 20px 20px;
+    .task{
+        display: flex;
+        padding-bottom: 10px;
+    }
+}

@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -15,14 +17,15 @@ import { SettingsComponent } from './settings/settings.component';
     TodoComponent,
     CompleteComponent,
     SettingsComponent,
-    
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    ComponentsModule
   ],
   exports: [
     PagesComponent,
-     ]
+    ]
 })
 export class PagesModule { }

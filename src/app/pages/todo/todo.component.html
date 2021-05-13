@@ -1,1 +1,30 @@
-<p>todo works!</p>
+<form [formGroup]="addTaskForm">
+    <div class="input-group"
+         (keyup.enter)="addTask()">
+        <input 
+               type="text" 
+               class="form-control"
+               placeholder="Type and hit enter"
+               formControlName="newTask"
+               id="newTask"
+               [class.is-invalid]="newTaskInvalid">
+     </div>
+</form>
+
+<div  class="tasks">
+    <div *ngFor="let task of userTodoTask"class="task">
+        <input 
+               type="text" 
+               class="form-control"
+               value=" {{task.description}} "
+               disabled>
+        <button (click)="completeTask(task)"
+                class="btn  btn-outline-primary">
+            <i class="fa fa-check"></i>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loading-wrapper">
+    <app-loading></app-loading>
+</div>

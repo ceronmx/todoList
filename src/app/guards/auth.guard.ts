@@ -22,32 +22,31 @@ export class AuthGuard implements CanActivate {
   }
 
   async canActivate(): Promise<any> {
-    // this.loading = true;
-    // let guardResult = false;
+    this.loading = true;
+    let guardResult = false;
 
-    // if(localStorage.getItem('token')){
-    //   try {
-    //     const res:any = await this._authService.validateToken().toPromise();
+    if(localStorage.getItem('token')){
+      try {
+        const res:any = await this._authService.validateToken().toPromise();
         
-    //     if(res.response.tokenValid){
-    //       guardResult = true
-    //     }else{
-    //       this.router.navigate(['auth/signin']);
-    //       guardResult = false;
-    //     }
+        if(res.response.tokenValid){
+          guardResult = true
+        }else{
+          this.router.navigate(['auth/signin']);
+          guardResult = false;
+        }
         
-    //   } catch (error) {
-    //     this.router.navigate(['auth/signin']);
-    //     guardResult = false;
-    //   }
-    //   this.loading = false;
-    //   return guardResult;
-    // } else {
-    //   this.loading = false;
-    //   this.router.navigate(['auth/signin']);
-    //   return false;
-    // }
-    return true;
+      } catch (error) {
+        this.router.navigate(['auth/signin']);
+        guardResult = false;
+      }
+      this.loading = false;
+      return guardResult;
+    } else {
+      this.loading = false;
+      this.router.navigate(['auth/signin']);
+      return false;
+    }
   }
 
   

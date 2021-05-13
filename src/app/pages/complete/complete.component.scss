@@ -1,0 +1,25 @@
+.titleWrapper{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center; 
+}
+
+.tasks{
+    padding: 10px 20px 20px;
+    .task{
+        display: flex;
+        padding-bottom: 10px;
+    }
+}
+
+.clearWrapper{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    button{
+        width: 50%;
+    }
+}

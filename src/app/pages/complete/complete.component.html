@@ -1,1 +1,25 @@
-<p>complete works!</p>
+<div class="titleWrapper">
+    <p>Completed Tasks:  {{userCompletedTasks?.length}} </p>
+</div>
+
+<div  class="tasks">
+    <div *ngFor="let task of userCompletedTasks"class="task">
+        <input 
+               type="text" 
+               class="form-control"
+               value=" {{task.description}} "
+               disabled>
+        <button (click)="deleteTask(task)"
+                class="btn  btn-outline-danger">
+            <i class="fa fa-trash"></i>
+        </button>
+    </div>
+</div>
+
+<div  class="clearWrapper">
+    <button class="btn btn-primary">Clear all</button>
+</div>
+
+<div *ngIf="loading" class="loading-wrapper">
+    <app-loading></app-loading>
+</div>

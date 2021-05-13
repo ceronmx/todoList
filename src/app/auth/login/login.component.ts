@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required,  Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-    pass: ['', [Validators.required]],
+    pass: ['123456', [Validators.required]],
     remember: []
   })
 
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
 
        this._toastr.success('Working hard or hardly working?', 'Welcome back! :)')
 
-       this.router.navigateByUrl('client/inicio');
+       this.router.navigateByUrl('client/todo');
       }else{
         this._toastr.error('Incorrect email/password', res.response);
       }
