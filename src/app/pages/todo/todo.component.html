@@ -1,3 +1,5 @@
+
+
 <form [formGroup]="addTaskForm">
     <div class="input-group"
          (keyup.enter)="addTask()">
@@ -19,7 +21,7 @@
                value=" {{task.description}} "
                disabled>
         <button (click)="completeTask(task)"
-                class="btn  btn-outline-primary">
+                class="btn">
             <i class="fa fa-check"></i>
         </button>
     </div>

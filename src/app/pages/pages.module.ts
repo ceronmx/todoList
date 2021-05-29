@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import { CompleteComponent } from './complete/complete.component';
 import { SettingsComponent } from './settings/settings.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 
 
@@ -22,6 +22,7 @@ import { ComponentsModule } from '../components/components.module';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    FormsModule,
     ComponentsModule
   ],
   exports: [

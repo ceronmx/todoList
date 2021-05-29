@@ -18,28 +18,16 @@ h6{
     grid-template-areas: "a a a"
                          "b b b";
 
-    .left{
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        font-size: 25px;
-    }
 
     .center{
         width: 100%;
         display: flex;
         justify-content: center;
         align-self: center;
+        grid-area: a;
     }
 
-    .right{
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 25px;
-    }
+
 
     .options{
         padding: 20px;

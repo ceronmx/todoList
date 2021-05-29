@@ -1,1 +1,82 @@
-<p>settings works!</p>
+<div class="profile-wrapper">
+    <form [formGroup]="userForm"
+          (ngSubmit)="sendData()">
+        <div class="avatar">
+            <img alt="avatar"
+                 [src]="imagePath"
+                 (click)="avatarFile.click()">
+            <button type="button"
+                    class="btn btn-primary" 
+                    (click)="avatarFile.click()">
+                <i class="fa fa-pen"></i>
+            </button>
+            <input type="file" style="display: none;" (change)="changeImage($event)" #avatarFile>
+        </div>
+
+        <input 
+            type="text" 
+            class="form-control"
+            formControlName="name"
+            placeholder="Your name"
+            id="name"
+            [class.is-invalid]="isInvalid('name')">
+
+        <input 
+            type="email" 
+            class="form-control"
+            formControlName="email"
+            placeholder="Email adress"
+            id="email"
+            [class.is-invalid]="isInvalid('email')">
+
+            
+        <button type="submit" 
+        class="btn btn-primary mb-4"
+        [disabled]="userForm.invalid || userForm.pristine">Save profile</button>
+    </form>
+</div>
+
+
+<div class="change-password">
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="showChangePassword" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Change Password
+        </label>
+      </div>
+
+
+
+    <form *ngIf="showChangePassword"
+          [formGroup]="changePasswordForm"
+          (ngSubmit)="changePass()">
+        <input 
+            type="password" 
+            class="form-control"
+            formControlName="pass"
+            placeholder="New password"
+            id="pass"
+            [class.is-invalid]="passwordInvalid('pass')">
+            <p class="text-danger"
+            *ngIf="passwordInvalid('pass')">At least 6 characters</p>
+        <input 
+            type="password" 
+            class="form-control"
+            formControlName="pass2"
+            placeholder="Confirm password"
+            id="pass2"
+            [class.is-invalid]="password2Check || passwordInvalid('pass2')">
+            <p class="text-danger"
+            *ngIf="passwordInvalid('pass2')">Confirm your password</p>
+            
+        <button type="submit" 
+        class="btn btn-primary mb-4"
+        [disabled]="changePasswordForm.invalid">Change password</button>
+    </form>
+</div>
+
+
+<div *ngIf="loading" class="loading-wrapper">
+    <app-loading></app-loading>
+</div>

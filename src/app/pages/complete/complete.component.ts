@@ -51,4 +51,18 @@ export class CompleteComponent implements OnInit {
       this._toastrService.error(error.error.response);
     }
   }
+
+  async deleteAllTasks(){
+    this.loading = true;
+    try {
+      const res: any = await this._userService.deleteTasks().toPromise();
+      if(!res.error){
+        this._toastrService.success('Tasks deleted');
+        this.getTasks();
+      }
+    } catch (error) {
+      console.log(error);
+      this._toastrService.error(error.error.response);
+    }
+  }
 }

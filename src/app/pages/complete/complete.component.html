@@ -10,14 +10,15 @@
                value=" {{task.description}} "
                disabled>
         <button (click)="deleteTask(task)"
-                class="btn  btn-outline-danger">
+                class="btn">
             <i class="fa fa-trash"></i>
         </button>
     </div>
 </div>
 
-<div  class="clearWrapper">
-    <button class="btn btn-primary">Clear all</button>
+<div  *ngIf="userCompletedTasks?.length > 0" class="clearWrapper">
+    <button (click)="deleteAllTasks()"
+            class="btn btn-primary">Clear all</button>
 </div>
 
 <div *ngIf="loading" class="loading-wrapper">

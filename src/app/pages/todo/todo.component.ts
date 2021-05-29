@@ -43,7 +43,6 @@ export class TodoComponent implements OnInit {
       this.userTodoTask = this.userTasks.filter(task => !task.completed)
 
     } catch (error) {
-      console.log(error);
       this._toastrService.error('Something went wrong!')
     }
 
@@ -59,10 +58,8 @@ export class TodoComponent implements OnInit {
     const description = this.addTaskForm.get('newTask').value;
     try {
       const res = await this._userService.createTask(description.toString()).toPromise();
-      console.log(res);
       this.getTasks();
     } catch (error) {
-      console.log(error);
       this._toastrService.error(error.error.response);
     }
 
@@ -81,7 +78,6 @@ export class TodoComponent implements OnInit {
         this.getTasks();
       }
     } catch (error) {
-      console.log(error);
       this._toastrService.error(error.error.response);
     }
 
