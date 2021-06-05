@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { TaskResponse } from '../interfaces/taskResponse.interface';
 import { User } from '../interfaces/user.interface';
@@ -93,8 +93,13 @@ export class UserService {
   }
 
   getAvatar(){
-    return this.http.get(`${BASE_URL}/users/${this.uid}/avatar`)
+    return this.http.get(`${BASE_URL}/users/${this.uid}/avatar`, {
+      responseType: 'blob'
+    } )
       .pipe(
+
+        map(() => `${BASE_URL}/users/${this.uid}/avatar`),
+
         catchError( e => {
           return throwError(e);
         })
@@ -103,6 +108,15 @@ export class UserService {
 
   patchUser(data: User){
     return this.http.patch(`${BASE_URL}/users/me`, data ,this.headers)
+      .pipe(
+        catchError( e => {
+          return throwError(e);
+        })
+      )
+  }
+
+  patchPassword(password: string){
+    return this.http.patch(`${BASE_URL}/users/me`, {password} ,this.headers)
       .pipe(
         catchError( e => {
           return throwError(e);

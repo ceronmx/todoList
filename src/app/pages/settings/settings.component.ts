@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -31,6 +33,7 @@ export class SettingsComponent implements OnInit {
   
   constructor(private _userService: UserService,
               private _toastrService: ToastrService,
+              private router: Router,
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -59,6 +62,21 @@ export class SettingsComponent implements OnInit {
 
     this.readFile($event.target)
     this.userForm.markAsDirty();
+  }
+
+  async changePassword(){
+    const { pass } = this.changePasswordForm.value;
+    console.log(pass);
+    try {
+      const res = await this._userService.patchPassword(pass).toPromise();
+      console.log(res);
+      this._toastrService.success('Password changed');
+      this.changePasswordForm.reset();
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
   }
 
   async sendData(){
@@ -97,9 +115,6 @@ export class SettingsComponent implements OnInit {
       if(this.file){
         resUserAvatar = await this._userService.postAvatar(this.file).toPromise();
       }
-
-      console.log(resUserData);
-      console.log(resUserAvatar);
       
     } catch (error) {
       console.log(error);
@@ -109,6 +124,12 @@ export class SettingsComponent implements OnInit {
     
   }
 
+  logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('auth/signin');
+  }
+
   private readFile(inputValue: any){
     const file = inputValue.files[0];
     const fileReader: FileReader = new FileReader();
@@ -116,11 +137,11 @@ export class SettingsComponent implements OnInit {
     fileReader.onloadend = (e) =>{
       this.imagePath = fileReader.result;
     }
-
+    
     fileReader.readAsDataURL(file);
-
+    
   }
-
+  
   private async getUserData(){
     this.loading = true;
     try {
@@ -136,19 +157,22 @@ export class SettingsComponent implements OnInit {
       this._toastrService.error(error.error.response);
     }
 
+
+
     try {
       const avatar: any = await this._userService.getAvatar().toPromise();
-      console.log(avatar);
-      
-      if(!avatar.error){
-        console.log(avatar)
+      if(avatar){
+        this.imagePath = avatar
       }
+      
     } catch (error) {
-      this.imagePath = error.url;
+
     }
 
     this.loading = false;
   }
+
+
 
   private initForm(){
     this.userForm.setValue({
@@ -164,8 +188,5 @@ export class SettingsComponent implements OnInit {
     return password === password2 ? null : { notSame: true };
   }
 
-  private changeAvatar(avatar: File){
-    
-  }
 
 }

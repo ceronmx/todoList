@@ -71,9 +71,17 @@
             *ngIf="passwordInvalid('pass2')">Confirm your password</p>
             
         <button type="submit" 
-        class="btn btn-primary mb-4"
-        [disabled]="changePasswordForm.invalid">Change password</button>
+                class="btn btn-primary mb-4"
+                [disabled]="changePasswordForm.invalid"
+                (click)="changePassword()">Change password</button>
     </form>
+
+</div>
+<div class="logoutContainer">
+    <button type="button" 
+            class="btn btn-outline-danger my-5"
+            (click)="logout()"
+    >Logout</button>
 </div>
 
 
